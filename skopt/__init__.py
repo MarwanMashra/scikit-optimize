@@ -33,7 +33,8 @@ __version__ = "0.9.0"
 
 if __SKOPT_SETUP__:
     import sys
-    sys.stderr.write('Partial import of skopt during the build process.\n')
+
+    sys.stderr.write("Partial import of skopt during the build process.\n")
     # We are not importing the rest of scikit-optimize during the build
     # process, as it may not be compiled yet
 else:
@@ -51,6 +52,7 @@ else:
     from .optimizer import forest_minimize
     from .optimizer import gbrt_minimize
     from .optimizer import gp_minimize
+    from .optimizer import xgboost_minimize
     from .optimizer import Optimizer
     from .searchcv import BayesSearchCV
     from .space import Space
@@ -58,6 +60,7 @@ else:
     from .utils import expected_minimum
     from .utils import expected_minimum_random_sampling
     from .utils import load
+
     __all__ = (
         "acquisition",
         "benchmarks",
@@ -71,12 +74,13 @@ else:
         "dummy_minimize",
         "forest_minimize",
         "gbrt_minimize",
+        "xgboost_minimize",
         "Optimizer",
         "dump",
         "load",
         "expected_minimum",
         "BayesSearchCV",
-        "Space"
+        "Space",
     )
-    IS_PYPY = platform.python_implementation() == 'PyPy'
+    IS_PYPY = platform.python_implementation() == "PyPy"
     _IS_32BIT = 8 * struct.calcsize("P") == 32
