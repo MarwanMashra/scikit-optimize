@@ -53,6 +53,7 @@ else:
     from .optimizer import gbrt_minimize
     from .optimizer import gp_minimize
     from .optimizer import xgboost_minimize
+    from .optimizer import lgbm_minimize
     from .optimizer import Optimizer
     from .searchcv import BayesSearchCV
     from .space import Space
@@ -75,6 +76,7 @@ else:
         "forest_minimize",
         "gbrt_minimize",
         "xgboost_minimize",
+        "lgbm_minimize",
         "Optimizer",
         "dump",
         "load",

@@ -5,7 +5,7 @@ from .forest import ExtraTreesRegressor
 from .gaussian_process import GaussianProcessRegressor
 from .gbrt import GradientBoostingQuantileRegressor
 from .xgboost import XGBRegressor
-
+from .lgbm import LGBMRegressor
 
 __all__ = (
     "RandomForestRegressor",
@@ -13,4 +13,5 @@ __all__ = (
     "GradientBoostingQuantileRegressor",
     "GaussianProcessRegressor",
     "XGBRegressor",
+    "LGBMRegressor",
 )
