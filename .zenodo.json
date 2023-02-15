@@ -1,6 +1,6 @@
 {
   "title": "scikit-optimize/scikit-optimize",
-  "description": "Scikit-Optimize, or skopt, is a simple and efficient library to minimize (very) expensive and noisy black-box functions. It implements several methods for sequential model-based optimization. skopt aims to be accessible and easy to use in many contexts.",
+  "description": "Scikit-Optimize, or skopt2, is a simple and efficient library to minimize (very) expensive and noisy black-box functions. It implements several methods for sequential model-based optimization. skopt2 aims to be accessible and easy to use in many contexts.",
   "creators": [
     {
       "affiliation": "Wild Tree Tech",

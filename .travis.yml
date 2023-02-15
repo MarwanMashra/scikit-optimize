@@ -3,31 +3,29 @@ language: python
 cache:
   apt: true
   directories:
-  - $HOME/.cache/pip
-  - $HOME/.ccache
+    - $HOME/.cache/pip
+    - $HOME/.ccache
 
 env:
   global:
     # Directory where tests are run from
-    - TEST_DIR=/tmp/skopt
+    - TEST_DIR=/tmp/skopt2
     - OMP_NUM_THREADS=4
     - OPENBLAS_NUM_THREADS=4
-
 
 matrix:
   include:
     - name: "Python 3.7  - scikit 0.24.2"
       python: "3.7"
       env: DISTRIB="conda" PYTHON_VERSION="3.7" COVERAGE="false"
-           NUMPY_VERSION="1.19.1" SCIPY_VERSION="1.5.2" PYAML_VERSION="20.4.0"
-           SCIKIT_LEARN_VERSION="0.24.2" JOBLIB_VERSION="0.16.0"
+        NUMPY_VERSION="1.19.1" SCIPY_VERSION="1.5.2" PYAML_VERSION="20.4.0"
+        SCIKIT_LEARN_VERSION="0.24.2" JOBLIB_VERSION="0.16.0"
     - name: "Python 3.7 - sdist check"
       python: "3.7"
       env: DISTRIB="conda" PYTHON_VERSION="3.7"
-           NUMPY_VERSION="*" SCIPY_VERSION="*" PYAML_VERSION="*"
-           SCIKIT_LEARN_VERSION="*" MATPLOTLIB_VERSION="*" COVERAGE="false"
-           JOBLIB_VERSION="*" SDIST="true"
-
+        NUMPY_VERSION="*" SCIPY_VERSION="*" PYAML_VERSION="*"
+        SCIKIT_LEARN_VERSION="*" MATPLOTLIB_VERSION="*" COVERAGE="false"
+        JOBLIB_VERSION="*" SDIST="true"
 
 install: source build_tools/travis/install.sh
 script:
@@ -38,7 +36,7 @@ deploy:
   provider: pypi
   user: __token__
   # this line together with `setup.cfg` creates universal wheels as long as
-  # skopt is a python only module (no compiled code)
+  # skopt2 is a python only module (no compiled code)
   distributions: sdist bdist_wheel
   on:
     tags: true

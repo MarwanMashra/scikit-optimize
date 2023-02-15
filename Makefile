@@ -26,7 +26,7 @@ inplace:
 	$(PYTHON) setup.py build_ext -i
 
 test-code: in
-	$(PYTEST) --showlocals -v skopt --durations=20
+	$(PYTEST) --showlocals -v skopt2 --durations=20
 test-sphinxext:
 	$(PYTEST) --showlocals -v doc/sphinxext/
 test-doc:
@@ -34,24 +34,24 @@ ifeq ($(BITS),64)
 	$(PYTEST) $(shell find doc -name '*.rst' | sort)
 endif
 test-code-parallel: in
-	$(PYTEST) -n auto --showlocals -v skopt --durations=20
+	$(PYTEST) -n auto --showlocals -v skopt2 --durations=20
 
 test-coverage:
 	rm -rf coverage .coverage
-	$(PYTEST) skopt --showlocals -v --cov=sklearn --cov-report=html:coverage
+	$(PYTEST) skopt2 --showlocals -v --cov=sklearn --cov-report=html:coverage
 test-coverage-parallel:
 	rm -rf coverage .coverage .coverage.*
-	$(PYTEST) skopt -n auto --showlocals -v --cov=sklearn --cov-report=html:coverage
+	$(PYTEST) skopt2 -n auto --showlocals -v --cov=sklearn --cov-report=html:coverage
 
 test: test-code test-sphinxext test-doc
 
 trailing-spaces:
-	find skopt -name "*.py" -exec perl -pi -e 's/[ \t]*$$//' {} \;
+	find skopt2 -name "*.py" -exec perl -pi -e 's/[ \t]*$$//' {} \;
 
 ctags:
 	# make tags for symbol based navigation in emacs and vim
 	# Install with: sudo apt-get install exuberant-ctags
-	$(CTAGS) --python-kinds=-i -R skopt
+	$(CTAGS) --python-kinds=-i -R skopt2
 
 doc: inplace
 	$(MAKE) -C doc html
@@ -61,7 +61,7 @@ doc-noplot: inplace
 
 code-analysis:
 	flake8 sklearn | grep -v __init__ | grep -v external
-	pylint -E -i y skopt/ -d E1103,E0611,E1101
+	pylint -E -i y skopt2/ -d E1103,E0611,E1101
 
 flake8-diff:
 	./build_tools/circle/linting.sh
