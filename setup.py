@@ -35,7 +35,7 @@ CLASSIFIERS = [
 
 
 setup(
-    name="scikit-optimize",
+    name="scikit-optimize2",
     version=VERSION,
     description="Sequential model-based optimization toolbox.",
     long_description=open("README.rst").read(),
