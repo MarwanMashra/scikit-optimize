@@ -30,6 +30,11 @@ def _return_std(X, trees, predictions, min_variance):
 class XGBRegressor(_sk_XGBRegressor):
     def __init__(
         self,
+        max_depth=3,
+        learning_rate=0.1,
+        n_estimators=300,
+        subsample=1,
+        random_state=0,
         # max_depth=3,
         # learning_rate=0.1,
         # n_estimators=300,
@@ -51,10 +56,15 @@ class XGBRegressor(_sk_XGBRegressor):
         # random_state=0,
         # seed=None,
         # missing=None,
-        min_variance=0.0,
+        # min_variance=0.0,
     ):
-        self.min_variance = min_variance
+        # self.min_variance = min_variance
         super(XGBRegressor, self).__init__(
+            max_depth=3,
+            learning_rate=0.1,
+            n_estimators=100,
+            subsample=1,
+            random_state=0,
             # max_depth=max_depth,
             # learning_rate=learning_rate,
             # n_estimators=n_estimators,
@@ -76,7 +86,7 @@ class XGBRegressor(_sk_XGBRegressor):
             # random_state=random_state,
             # seed=seed,
             # missing=missing,
-            min_variance=min_variance,
+            # min_variance=min_variance,
         )
 
     def predict(self, X, return_std=False):
