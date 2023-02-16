@@ -30,7 +30,7 @@ class XGBRegressor(_sk_XGBRegressor):
         self,
         max_depth=3,
         learning_rate=0.1,
-        n_estimators=100,
+        n_estimators=300,
         silent=True,
         objective="binary:logistic",
         booster="gbtree",
