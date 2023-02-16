@@ -359,10 +359,10 @@ def cook_estimator(base_estimator, space=None, **kwargs):
     """
     if isinstance(base_estimator, str):
         base_estimator = base_estimator.upper()
-        if base_estimator not in ["GP", "ET", "RF", "GBRT", "DUMMY", "XGB"]:
+        if base_estimator not in ["GP", "ET", "RF", "GBRT", "DUMMY", "XGB", "LGBM"]:
             raise ValueError(
                 "Valid strings for the base_estimator parameter "
-                " are: 'RF', 'ET', 'GP', 'GBRT' or 'DUMMY' not "
+                " are: 'RF', 'ET', 'GP', 'GBRT', 'XGB', 'LGBM', or 'DUMMY' not "
                 "%s." % base_estimator
             )
     elif not is_regressor(base_estimator):
