@@ -60,11 +60,11 @@ class XGBRegressor(_sk_XGBRegressor):
     ):
         # self.min_variance = min_variance
         super(XGBRegressor, self).__init__(
-            max_depth=3,
-            learning_rate=0.1,
-            n_estimators=100,
-            subsample=1,
-            random_state=0,
+            max_depth=max_depth,
+            learning_rate=learning_rate,
+            n_estimators=n_estimators,
+            subsample=subsample,
+            random_state=random_state,
             # max_depth=max_depth,
             # learning_rate=learning_rate,
             # n_estimators=n_estimators,
