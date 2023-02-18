@@ -21,6 +21,7 @@ from .learning.gaussian_process.kernels import Matern
 from .sampler import Sobol, Lhs, Hammersly, Halton, Grid
 from .sampler import InitialPointGenerator
 from .space import Space, Categorical, Integer, Real, Dimension
+from xgboost import XGBRegressor as _xgb_XGBRegressor
 
 __all__ = (
     "load",
@@ -402,7 +403,8 @@ def cook_estimator(base_estimator, space=None, **kwargs):
         gbrt = GradientBoostingRegressor(n_estimators=30, loss="quantile")
         base_estimator = GradientBoostingQuantileRegressor(base_estimator=gbrt)
     elif base_estimator == "XGB":
-        base_estimator = XGBRegressor(n_estimators=30)
+        xgb_reg = _xgb_XGBRegressor(n_estimators=30)
+        base_estimator = XGBRegressor(base_estimator=xgb_reg)
     elif base_estimator == "LGBM":
         base_estimator = LGBMRegressor(n_estimators=100)
     elif base_estimator == "DUMMY":
