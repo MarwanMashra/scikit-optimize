@@ -407,12 +407,15 @@ def cook_estimator(base_estimator, space=None, **kwargs):
         xgb_reg = _xgb_XGBRegressor(n_estimators=30)
         base_estimator = XGBRegressor(base_estimator=xgb_reg)
     elif base_estimator == "LGBM":
-        # lgbm_reg = _lgbm_LGBMRegressor(
-        #     n_estimators=30, objective="quantile", metric="quantile"
-        # )
-        # base_estimator = LGBMRegressor(base_estimator=lgbm_reg)
-        gbrt = GradientBoostingRegressor(n_estimators=30, loss="quantile")
-        base_estimator = GradientBoostingQuantileRegressor(base_estimator=gbrt)
+        lgbm_reg = _lgbm_LGBMRegressor(
+            n_estimators=30,
+            objective="quantile",
+            metric="quantile",
+            boosting_type="dart",
+        )
+        base_estimator = LGBMRegressor(base_estimator=lgbm_reg)
+        # gbrt = GradientBoostingRegressor(n_estimators=30, loss="quantile")
+        # base_estimator = GradientBoostingQuantileRegressor(base_estimator=gbrt)
     elif base_estimator == "DUMMY":
         return None
 
