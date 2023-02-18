@@ -6,6 +6,7 @@ from scipy.optimize import OptimizeResult
 from scipy.optimize import minimize as sp_minimize
 from sklearn.base import is_regressor
 from sklearn.ensemble import GradientBoostingRegressor
+from lightgbm import LGBMRegressor as _lgbm_LGBMRegressor
 from joblib import dump as dump_
 from joblib import load as load_
 from collections import OrderedDict
@@ -406,7 +407,10 @@ def cook_estimator(base_estimator, space=None, **kwargs):
         xgb_reg = _xgb_XGBRegressor(n_estimators=30)
         base_estimator = XGBRegressor(base_estimator=xgb_reg)
     elif base_estimator == "LGBM":
-        base_estimator = LGBMRegressor(n_estimators=100)
+        lgbm_reg = _lgbm_LGBMRegressor(
+            n_estimators=30, objective="quantile", metric="quantile"
+        )
+        base_estimator = LGBMRegressor(base_estimator=lgbm_reg)
     elif base_estimator == "DUMMY":
         return None
 
